@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    [SerializeField] MouseInputManager mouseInputManager;
     [SerializeField] InputActionReference pause;
     [SerializeField] Image pausePanel;
 
@@ -12,7 +13,6 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         pausePanel.gameObject.SetActive(false);
-
         pause.action.performed += TogglePause;
     }
 
@@ -33,11 +33,13 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
+        mouseInputManager.DisableActions();
         Time.timeScale = 0;
     }
 
     public void Resume()
     {
+        mouseInputManager.EnableActions();
         Time.timeScale = 1;
     }
 

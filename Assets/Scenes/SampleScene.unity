@@ -876,6 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8777981b8b72b94439edaee09404a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseInputManager: {fileID: 11400000, guid: 1de48d9da8e43f04b9b113c904698ffa, type: 2}
   pause: {fileID: -6728359130466852733, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   pausePanel: {fileID: 1299992973}
 --- !u!4 &1393677016
