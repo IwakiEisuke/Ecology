@@ -90,18 +90,18 @@ public class UnitSelector : MonoBehaviour
 
     void SetEffectSelecting(Transform target, bool enable)
     {
-        //if (target == null) return;
-        //target.GetComponentInChildren<Renderer>().material.SetFloat("_Alpha", enable ? 1f : 0f);
+        if (target == null) return;
+        target.GetComponentInChildren<Renderer>().material.SetFloat("_Alpha", enable ? 1f : 0f);
     }
 
     void SetEffectControlTarget(Transform target, bool enable)
     {
-        //if (target == null) return;
-        //var isSelect = enable || (!enable && selecting.Contains(target));
+        if (target == null) return;
+        var isSelect = enable || (!enable && selecting.Contains(target));
 
-        //var material = target.GetComponentInChildren<Renderer>().material;
-        //material.SetFloat("_Alpha", isSelect ? 1f : 0f);
-        //material.SetFloat("_IsHover", enable ? 1f : 0f);
+        var material = target.GetComponentInChildren<Renderer>().material;
+        material.SetFloat("_Alpha", isSelect ? 1f : 0f);
+        material.SetFloat("_IsHover", enable ? 1f : 0f);
     }
 
     void SetControlTarget(Transform target)
