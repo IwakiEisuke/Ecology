@@ -27,8 +27,15 @@ public class CameraController : MonoBehaviour
         var dt = Time.deltaTime;
         horizontalPosition += speed * dt * (Quaternion.Euler(0, rotate.y, 0) * new Vector3(moveInput.x, 0, moveInput.y));
         rotate.y += rotateInput * rotateSpeed * dt;
-        
+
         transform.rotation = Quaternion.Euler(rotate);
-        transform.position = horizontalPosition - transform.forward * distance;
+        if (Physics.Raycast(horizontalPosition + Vector3.up * 100, Vector3.down, out var hit))
+        {
+            transform.position = hit.point - transform.forward * distance;
+        }
+        else
+        {
+            transform.position = horizontalPosition - transform.forward * distance;
+        }
     }
 }
