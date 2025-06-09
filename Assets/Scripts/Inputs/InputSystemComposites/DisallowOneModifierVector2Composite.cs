@@ -1,15 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Composites;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Layouts;
-
-#if UNITY_EDITOR
-using UnityEditor;
-using UnityEngine.InputSystem.Editor;
-using UnityEngine.UIElements;
-#endif
-
 
 public class DisallowOneModifierVector2Composite : InputBindingComposite<Vector2>
 {
@@ -46,7 +38,7 @@ public class DisallowOneModifierVector2Composite : InputBindingComposite<Vector2
 
     public override Vector2 ReadValue(ref InputBindingCompositeContext context)
     {
-        if (!context.ReadValueAsButton(modifier) && !invertDisallow)
+        if (!context.ReadValueAsButton(modifier) != invertDisallow)
         {
             var mode = this.mode;
 
