@@ -300,6 +300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db27db07fb6466e40bf982fb1772103d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontalPosition: {x: 0, y: 0, z: 0}
+  rotate: {x: 45, y: 0, z: 0}
+  distance: 30
+  speed: 20
+  rotateSpeed: 30
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
