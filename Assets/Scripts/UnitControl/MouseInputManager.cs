@@ -26,7 +26,7 @@ public class MouseInputManager : ScriptableObject
 
     [SerializeField] InputActionReference mousePress;
     [SerializeField] InputActionReference mousePoint;
-    //[SerializeField] InputActionReference openMenu;
+    [SerializeField] InputActionReference openMenu;
 
     Vector3 _dragStartMousePos;
     Vector3 _dragEndMousePos;
@@ -57,10 +57,10 @@ public class MouseInputManager : ScriptableObject
             }
         };
 
-        //openMenu.action.performed += (context) =>
-        //{
-        //    OpenMenu?.Invoke();
-        //};
+        openMenu.action.performed += (context) =>
+        {
+            OpenMenu?.Invoke();
+        };
     }
 
     public void Update()

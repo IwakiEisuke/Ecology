@@ -42,6 +42,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "SetTarget",
+                    "type": "Button",
+                    "id": "f890814f-bacd-4df1-b2bb-6e8e9a57317b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Area",
                     "type": "Value",
                     "id": "1174521a-edbc-4ad2-803b-8e357a7cc287",
@@ -401,6 +410,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "613c9e62-73e6-4b7a-836a-9cccbec8c069",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetTarget",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
