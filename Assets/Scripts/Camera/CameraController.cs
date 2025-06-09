@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] LayerMask terrainLayer;
     [SerializeField] Vector3 horizontalPosition;
     [SerializeField] Vector3 rotate;
     [SerializeField] float distance;
@@ -39,7 +40,7 @@ public class CameraController : MonoBehaviour
         distance = Mathf.Clamp(distance - zoomInput * zoomSpeed, minDistance, maxDistance);
 
         transform.rotation = Quaternion.Euler(rotate);
-        if (Physics.Raycast(horizontalPosition + Vector3.up * 100, Vector3.down, out var hit))
+        if (Physics.Raycast(horizontalPosition + Vector3.up * 100, Vector3.down, out var hit, 100f, terrainLayer.value))
         {
             transform.position = hit.point - transform.forward * distance;
         }

@@ -300,13 +300,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db27db07fb6466e40bf982fb1772103d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
   horizontalPosition: {x: 0, y: 0, z: 0}
   rotate: {x: 45, y: 0, z: 0}
   distance: 30
   speed: 20
   rotateSpeed: 30
   zoomSpeed: 3
-  minDistance: 5
+  minDistance: 10
   maxDistance: 100
 --- !u!1 &410087039
 GameObject:
@@ -668,7 +671,7 @@ GameObject:
   - component: {fileID: 1661265480}
   - component: {fileID: 1661265479}
   - component: {fileID: 1661265482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
