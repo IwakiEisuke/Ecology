@@ -8,9 +8,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] float distance;
     [SerializeField] float speed = 5f;
     [SerializeField] float rotateSpeed = 5f;
+    [SerializeField] float zoomSpeed = 5f;
+    [SerializeField] float minDistance = 5f;
+    [SerializeField] float maxDistance = 100f;
 
     Vector2 moveInput;
     float rotateInput;
+    float zoomInput;
 
     public void OnMove(InputValue value)
     {
@@ -22,11 +26,17 @@ public class CameraController : MonoBehaviour
         rotateInput = value.Get<float>();
     }
 
+    public void OnZoom(InputValue value)
+    {
+        zoomInput = value.Get<float>();
+    }
+
     private void Update()
     {
         var dt = Time.deltaTime;
         horizontalPosition += speed * dt * (Quaternion.Euler(0, rotate.y, 0) * new Vector3(moveInput.x, 0, moveInput.y));
         rotate.y += rotateInput * rotateSpeed * dt;
+        distance = Mathf.Clamp(distance - zoomInput * zoomSpeed, minDistance, maxDistance);
 
         transform.rotation = Quaternion.Euler(rotate);
         if (Physics.Raycast(horizontalPosition + Vector3.up * 100, Vector3.down, out var hit))

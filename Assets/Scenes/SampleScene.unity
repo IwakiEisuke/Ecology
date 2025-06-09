@@ -305,6 +305,9 @@ MonoBehaviour:
   distance: 30
   speed: 20
   rotateSpeed: 30
+  zoomSpeed: 3
+  minDistance: 5
+  maxDistance: 100
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
