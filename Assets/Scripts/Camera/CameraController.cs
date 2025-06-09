@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         var dt = Time.deltaTime;
         horizontalPosition += speed * dt * (Quaternion.Euler(0, rotate.y, 0) * new Vector3(moveInput.x, 0, moveInput.y));
         rotate += rotateSpeed * dt * new Vector3(rotateInput.y, rotateInput.x);
-        distance = Mathf.Clamp(distance - zoomInput * zoomSpeed, minDistance, maxDistance);
+        distance = Mathf.Clamp(distance - zoomInput * zoomSpeed * dt, minDistance, maxDistance);
 
         transform.rotation = Quaternion.Euler(rotate);
         if (Physics.Raycast(horizontalPosition + Vector3.up * 100, Vector3.down, out var hit, 100f, terrainLayer.value))

@@ -308,7 +308,7 @@ MonoBehaviour:
   distance: 30
   speed: 20
   rotateSpeed: 60
-  zoomSpeed: 3
+  zoomSpeed: 30
   minDistance: 10
   maxDistance: 60
 --- !u!1 &410087039
