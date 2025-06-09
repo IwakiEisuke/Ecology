@@ -88,9 +88,5 @@ public class MouseInputManager : ScriptableObject
         OpenMenu = null;
         CloseMenu = null;
         OnMouseClickedWithoutUI = null;
-
-        mousePress.action.Reset();
-        mousePoint.action.Reset();
-        //openMenu.action.Reset();
     }
 }
