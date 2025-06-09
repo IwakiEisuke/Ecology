@@ -4,6 +4,10 @@ public class DebugViewer : MonoBehaviour
 {
     bool isVisible = true;
 
+    int frameCount;
+    float prevTime;
+    float fps;
+
     [RuntimeInitializeOnLoadMethod]
     public static void Initialize()
     {
@@ -14,9 +18,19 @@ public class DebugViewer : MonoBehaviour
 
     private void Update()
     {
+        frameCount++;
+
+        float time = Time.realtimeSinceStartup - prevTime;
+        if (time > 0.2f)
+        {
+            fps = frameCount / time;
+            frameCount = 0;
+            prevTime = Time.realtimeSinceStartup;
+        }
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            isVisible = !isVisible; // Toggle visibility
+            isVisible = !isVisible;
         }
     }
 
@@ -31,7 +45,7 @@ public class DebugViewer : MonoBehaviour
         };
         GUILayout.BeginVertical();
         GUILayout.Label("Debug Viewer: Press F1 to toggle visibility", style);
-        GUILayout.Label($"FPS: {1f / Time.deltaTime}", style);
+        GUILayout.Label($"FPS: {fps}", style);
         GUILayout.EndVertical();
     }
 }
