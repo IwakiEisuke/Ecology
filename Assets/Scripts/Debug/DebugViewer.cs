@@ -5,6 +5,9 @@ public class DebugViewer : MonoBehaviour
     bool isVisible = true;
 
     int frameCount;
+    float maxGap;
+    float currMaxGap;
+    float prevFrameTime;
     float prevTime;
     float fps;
 
@@ -20,12 +23,21 @@ public class DebugViewer : MonoBehaviour
     {
         frameCount++;
 
-        float time = Time.realtimeSinceStartup - prevTime;
-        if (time > 0.2f)
+        float gapTime = Time.realtimeSinceStartup - prevFrameTime;
+        prevFrameTime = Time.realtimeSinceStartup;
+        if (gapTime > currMaxGap)
         {
-            fps = frameCount / time;
+            currMaxGap = gapTime;
+        }
+
+        float elapsedTime = Time.realtimeSinceStartup - prevTime;
+        if (elapsedTime > 0.2f)
+        {
+            fps = frameCount / elapsedTime;
             frameCount = 0;
             prevTime = Time.realtimeSinceStartup;
+            maxGap = currMaxGap;
+            currMaxGap = 0f;
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
@@ -45,7 +57,7 @@ public class DebugViewer : MonoBehaviour
         };
         GUILayout.BeginVertical();
         GUILayout.Label("Debug Viewer: Press F1 to toggle visibility", style);
-        GUILayout.Label($"FPS: {fps}", style);
+        GUILayout.Label($"FPS: {fps:0.0} | <maxGap> {maxGap*1000:0}ms", style);
         GUILayout.EndVertical();
     }
 }
