@@ -18,6 +18,7 @@ public class UnitSelector : MonoBehaviour
 
     //public List<Ally> SelectingAllies => selecting.Select(x => x.GetComponent<Ally>()).ToList();
     public Transform ControlTarget { get; private set; }
+    public Transform HoveredTarget { get; private set; }
 
     public event Action OnSelectControlTarget;
 
@@ -117,6 +118,11 @@ public class UnitSelector : MonoBehaviour
         if (target != null) SetEffectControlTarget(ControlTarget, true);
     }
 
+    void SetHoveredTarget(Transform target)
+    {
+        HoveredTarget = target;
+    }
+
     void Update()
     {
         if (mouseInputManager.IsDragging)
@@ -132,18 +138,18 @@ public class UnitSelector : MonoBehaviour
                 //selectMarker.SetActive(true);
 
                 // ホバー中のユニットを選択中のターゲットに設定
-                SetControlTarget(selectHit.transform);
+                SetHoveredTarget(selectHit.transform);
             }
             else
             {
                 //selectMarker.SetActive(false);
-                SetControlTarget(selectHit.transform);
+                SetHoveredTarget(selectHit.transform);
             }
         }
 
-        if (selecting.Count > 0)
+        if (ControlTarget != null)
         {
-            Debug.Log(string.Join(',', selecting.Select(s => s.name)));
+            Debug.Log(ControlTarget.name);
         }
     }
 
