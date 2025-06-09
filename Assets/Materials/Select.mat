@@ -61,10 +61,14 @@ Material:
     - _QueueOffset: 0
     - _WireApprove: 10
     - _WireSpeed: 0.02
+    - _WireWidth: 0.2
     m_Colors:
+    - _ControlFresnelColor: {r: 1, g: 0.44493127, b: 0, a: 1}
+    - _ControlWireColor: {r: 1, g: 0.6317429, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HoverFresnelColor: {r: 0, g: 0, b: 0, a: 0}
+    - _HoverFresnelColor: {r: 1, g: 0.47368425, b: 0, a: 1}
     - _HoverSelectingColor: {r: 1, g: 0.6317429, b: 0, a: 1}
-    - _WireColor: {r: 0, g: 0.8256683, b: 1, a: 0}
+    - _WireColor: {r: 1, g: 1, b: 1, a: 1}
+    - _WireControlColor: {r: 1, g: 0.6317429, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
