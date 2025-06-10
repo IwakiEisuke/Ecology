@@ -40,7 +40,6 @@ public class InputManager : MonoBehaviour
         {
             if (frame == 1)
             {
-                // 初回のUpdateでUIアクションマップを有効化
                 SetPlayerActionMap();
             }
             frame++;
