@@ -16,6 +16,8 @@ public class InputManager : MonoBehaviour
     public static MouseInputManager MouseInput => Instance.mouseInputManager;
     public static KeyInputManager KeyInput => Instance.keyInputManager;
 
+    int frame = 0;
+
     private void Awake()
     {
         Instance = this;
@@ -28,21 +30,21 @@ public class InputManager : MonoBehaviour
 
         mouseInputManager.Init();
         keyInputManager.Init();
-
-#if UNITY_EDITOR
-        // InputSystem側で全てアクションマップが有効化されてしまうので、あとから有効状態を設定する
-        // このコールバックがStartより後に実行されるため、ここで設定する必要がある
-        UnityEditor.EditorApplication.playModeStateChanged += state =>
-        {
-            if (state == UnityEditor.PlayModeStateChange.EnteredPlayMode)
-                SetPlayerActionMap();
-        };
-#endif
     }
 
     private void Update()
     {
         mouseInputManager.Update();
+
+        if (frame <= 1)
+        {
+            if (frame == 1)
+            {
+                // 初回のUpdateでUIアクションマップを有効化
+                SetPlayerActionMap();
+            }
+            frame++;
+        }
     }
 
     private void OnDestroy()
