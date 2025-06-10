@@ -707,7 +707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1299992972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -846,7 +846,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bd92980d3f63c408a51f6c4fd576eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  cameraPlayerInput: {fileID: 330585548}
   mouseInputManager: {fileID: 11400000, guid: 1de48d9da8e43f04b9b113c904698ffa, type: 2}
+  keyInputManager: {fileID: 11400000, guid: fcf1cd2d6c6676943a5d140221bfe451, type: 2}
 --- !u!1 &1393677014
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,9 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8777981b8b72b94439edaee09404a978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInputManager: {fileID: 11400000, guid: 1de48d9da8e43f04b9b113c904698ffa, type: 2}
-  pause: {fileID: -6728359130466852733, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  pausePanel: {fileID: 1299992973}
+  keyInputManager: {fileID: 11400000, guid: fcf1cd2d6c6676943a5d140221bfe451, type: 2}
+  pausePanel: {fileID: 1299992971}
 --- !u!4 &1393677016
 Transform:
   m_ObjectHideFlags: 0

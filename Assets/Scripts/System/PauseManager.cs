@@ -4,47 +4,31 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
-    [SerializeField] MouseInputManager mouseInputManager;
-    [SerializeField] InputActionReference pause;
-    [SerializeField] Image pausePanel;
+    [SerializeField] KeyInputManager keyInputManager;
+    [SerializeField] GameObject pausePanel;
 
-    bool isPausing = false;
+    public bool IsPausing { get; private set; }
 
     private void Start()
     {
         pausePanel.gameObject.SetActive(false);
-        pause.action.performed += TogglePause;
-    }
-
-    public void TogglePause(InputAction.CallbackContext context)
-    {
-        if (!isPausing)
-        {
-            Pause();
-        }
-        else
-        {
-            Resume();
-        }
-
-        isPausing = !isPausing;
-        pausePanel.gameObject.SetActive(isPausing);
+        keyInputManager.Pause += Pause;
+        keyInputManager.Resume += Resume;
     }
 
     public void Pause()
     {
-        mouseInputManager.DisableActions();
         Time.timeScale = 0;
+        IsPausing = true;
+        pausePanel.SetActive(true);
+        InputManager.Instance.SetUIActionMap();
     }
 
     public void Resume()
     {
-        mouseInputManager.EnableActions();
         Time.timeScale = 1;
-    }
-
-    private void OnDisable()
-    {
-        pause.action.performed -= TogglePause;
+        IsPausing = false;
+        pausePanel.SetActive(false);
+        InputManager.Instance.SetPlayerActionMap();
     }
 }
