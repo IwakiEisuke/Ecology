@@ -11,7 +11,7 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        pausePanel.gameObject.SetActive(false);
+        pausePanel.SetActive(false);
         keyInputManager.Pause += Pause;
         keyInputManager.Resume += Resume;
     }

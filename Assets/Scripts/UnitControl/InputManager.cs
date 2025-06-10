@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
@@ -28,6 +28,16 @@ public class InputManager : MonoBehaviour
 
         mouseInputManager.Init();
         keyInputManager.Init();
+
+#if UNITY_EDITOR
+        // InputSystem側で全てアクションマップが有効化されてしまうので、あとから有効状態を設定する
+        // このコールバックがStartより後に実行されるため、ここで設定する必要がある
+        UnityEditor.EditorApplication.playModeStateChanged += state =>
+        {
+            if (state == UnityEditor.PlayModeStateChange.EnteredPlayMode)
+                SetPlayerActionMap();
+        };
+#endif
     }
 
     private void Update()
