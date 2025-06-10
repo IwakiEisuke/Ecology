@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DebugViewer : MonoBehaviour
 {
+    public static DebugViewer Instance { get; private set; }
+
     bool isVisible = true;
 
     int frameCount;
@@ -11,11 +13,13 @@ public class DebugViewer : MonoBehaviour
     float prevTime;
     float fps;
 
+    string stackTrace = string.Empty;
+
     [RuntimeInitializeOnLoadMethod]
     public static void Initialize()
     {
-        GameObject debugViewer = new GameObject("DebugViewer");
-        debugViewer.AddComponent<DebugViewer>();
+        GameObject debugViewer = new("DebugViewer");
+        Instance = debugViewer.AddComponent<DebugViewer>();
         DontDestroyOnLoad(debugViewer);
     }
 
@@ -58,6 +62,12 @@ public class DebugViewer : MonoBehaviour
         GUILayout.BeginVertical();
         GUILayout.Label("Debug Viewer: Press F1 to toggle visibility", style);
         GUILayout.Label($"FPS: {fps:0.0} | <maxGap> {maxGap*1000:0}ms", style);
+        GUILayout.Label(stackTrace, style);
         GUILayout.EndVertical();
+    }
+
+    public static void SetStackTrace(string stackTrace)
+    {
+        Instance.stackTrace = stackTrace;
     }
 }
