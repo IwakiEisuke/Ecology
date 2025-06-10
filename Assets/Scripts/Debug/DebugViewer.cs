@@ -47,7 +47,7 @@ public class DebugViewer : MonoBehaviour
             currMaxGap = 0f;
         }
 
-        currentTime = TimeSpan.FromSeconds(GameTimeManager.CurrentTime).ToString(@"dd\.hh\:mm\:ss");
+        currentTime = GameManager.CurrentTimeString;
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
