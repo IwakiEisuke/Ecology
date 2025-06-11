@@ -7,7 +7,17 @@ using UnityEngine.UI;
 public class UnitStatsView : MonoBehaviour
 {
     [SerializeField] UnitStats unitStats;
-    [SerializeField] Text testStatsText;
+    [SerializeField] Text unitName;
+    [SerializeField] Text age;
+    [SerializeField] Text blood;
+    [SerializeField] Text oxygen;
+    [SerializeField] Text consciousness;
+    [SerializeField] Text hunger;
+    [SerializeField] Text thirst;
+    [SerializeField] Text vitality;
+    [SerializeField] Text traits;
+    [SerializeField] Text emotion;
+    [SerializeField] GameObject attributesParent;
 
     private void Update()
     {
@@ -16,6 +26,6 @@ public class UnitStatsView : MonoBehaviour
 
     private void UpdateView()
     {
-        testStatsText.text = unitStats.TestStats.ToString("F2");
+        blood.text = unitStats.TestStats.ToString("F2");
     }
 }
