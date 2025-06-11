@@ -6,7 +6,7 @@ public partial class GameManager
     /// <summary>
     /// ゲーム内時間を管理するクラス
     /// </summary>
-    public class GameTimeManager
+    private class GameTimeManager
     {
         private float _currentTime;
         public float CurrentTime => _currentTime;

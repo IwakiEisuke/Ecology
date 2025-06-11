@@ -1,9 +1,9 @@
 public partial class GameManager : Singleton<GameManager>
 {
-    private GameTimeManager gameTimeManager = new();
+    private readonly GameTimeManager gameTimeManager = new();
 
-    public static float CurrentTime => Instance.gameTimeManager.CurrentTime;
-    public static string CurrentTimeString => Instance.gameTimeManager.CurrentTimeString;
+    public static float CurrentTime => Instance.gameTimeManager != null ? Instance.gameTimeManager.CurrentTime : -1;
+    public static string CurrentTimeString => Instance.gameTimeManager != null ? Instance.gameTimeManager.CurrentTimeString : "GameTimeManager is not found";
 
     private void Start()
     {
