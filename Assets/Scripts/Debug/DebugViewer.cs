@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DebugViewer : MonoBehaviour
@@ -12,6 +13,8 @@ public class DebugViewer : MonoBehaviour
     float prevFrameTime;
     float prevTime;
     float fps;
+
+    string currentTime;
 
     string stackTrace = string.Empty;
 
@@ -44,6 +47,8 @@ public class DebugViewer : MonoBehaviour
             currMaxGap = 0f;
         }
 
+        currentTime = GameManager.CurrentTimeString;
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             isVisible = !isVisible;
@@ -62,6 +67,7 @@ public class DebugViewer : MonoBehaviour
         GUILayout.BeginVertical();
         GUILayout.Label("Debug Viewer: Press F1 to toggle visibility", style);
         GUILayout.Label($"FPS: {fps:0.0} | <maxGap> {maxGap*1000:0}ms", style);
+        GUILayout.Label($"CurrentTime: {currentTime}", style);
         GUILayout.Label(stackTrace, style);
         GUILayout.EndVertical();
     }
