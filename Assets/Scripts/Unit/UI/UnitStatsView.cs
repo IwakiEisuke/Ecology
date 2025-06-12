@@ -27,6 +27,14 @@ public class UnitStatsView : MonoBehaviour
 
     private void UpdateView()
     {
-        
+        unitName.text = unitStats.UnitName;
+        age.text = unitStats.Age.ToString();
+        blood.text = unitStats.Blood.ToString("F2");
+        oxygen.text = unitStats.Oxygen.ToString("F2");
+        consciousness.text = unitStats.Consciousness.ToString("F2");
+        hunger.text = unitStats.Hunger.ToString("F2");
+        thirst.text = unitStats.Thirst.ToString("F2");
+        stamina.text = unitStats.Stamina.ToString("F2");
+        vitality.text = unitStats.Vitality.ToString("F2");
     }
 }
