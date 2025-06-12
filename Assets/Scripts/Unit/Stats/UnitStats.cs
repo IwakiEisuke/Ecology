@@ -3,10 +3,13 @@
 /// <summary>
 /// ユニットのステータス
 /// </summary>
-public class UnitStats : MonoBehaviour
+public partial class UnitStats : MonoBehaviour
 {
     [SerializeField] string unitName;
     [SerializeField] int age;
+
+    public string UnitName => unitName;
+    public int Age => age;
 
     // 基本ステータス
     [SerializeField] float blood = 1;
@@ -38,4 +41,7 @@ public class UnitStats : MonoBehaviour
     // 性格
 
     // 能力
+
+    partial void Start();
+    partial void Update();
 }
