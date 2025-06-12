@@ -14,8 +14,9 @@ public class UnitStatsView : MonoBehaviour
     [SerializeField] Text consciousness;
     [SerializeField] Text hunger;
     [SerializeField] Text thirst;
+    [SerializeField] Text stamina;
     [SerializeField] Text vitality;
-    [SerializeField] Text traits;
+    [SerializeField] Text personality;
     [SerializeField] Text emotion;
     [SerializeField] GameObject attributesParent;
 

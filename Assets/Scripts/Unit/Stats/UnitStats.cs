@@ -14,6 +14,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField] float consciousness = 1;
     [SerializeField] float hunger = 1;
     [SerializeField] float thirst = 1;
+    [SerializeField] float stamina = 1;
     [SerializeField] float vitality = 1;
 
     // 感情
