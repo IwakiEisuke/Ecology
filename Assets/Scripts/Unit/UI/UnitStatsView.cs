@@ -26,6 +26,6 @@ public class UnitStatsView : MonoBehaviour
 
     private void UpdateView()
     {
-        blood.text = unitStats.TestStats.ToString("F2");
+        
     }
 }
