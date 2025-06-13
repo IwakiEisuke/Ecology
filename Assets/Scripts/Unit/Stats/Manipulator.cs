@@ -33,7 +33,7 @@ public partial class UnitStats
         {
             var dt = Time.deltaTime;
             stats.oxygen = Mathf.Clamp01(stats.oxygen - (stats.oxygen - stats.blood) * 0.3f*dt);
-            stats.consciousness = Mathf.Clamp01(stats.consciousness - ((stats.consciousness - stats.oxygen)* 0.15f + (1 - Mathf.Sqrt(1 - stats.oxygen*stats.oxygen)) *0.2f)*dt);
+            stats.consciousness = Mathf.Clamp01(stats.consciousness - ((stats.consciousness - stats.oxygen)*0.1f + (1 - stats.oxygen) * 0.2f)* dt);
             stats.stamina = Mathf.Clamp01(stats.stamina - (stats.stamina - stats.oxygen)*0.2f*dt);
             stats.vitality = Mathf.Clamp01(stats.vitality - ((stats.vitality - stats.oxygen)*0.1f + (1 - stats.vitality) * 0.05f)*dt);
         }
