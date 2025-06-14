@@ -6,10 +6,13 @@ public class Unit : MonoBehaviour
 
     private void Update()
     {
-        //stats.manipulator.BloodReduction(0.05f * Time.deltaTime);
         if (stats.Vitality <= 0)
         {
             Debug.Log($"{stats.UnitName} is dead.");
+        }
+        else
+        {
+            stats.manipulator.Reduction();
         }
     }
 

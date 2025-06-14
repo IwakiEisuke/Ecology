@@ -24,16 +24,21 @@ public partial class UnitStats
             this.stats = stats;
         }
 
-        public void BloodReduction(float value)
+        public void Reduction()
         {
-            stats.blood = Mathf.Clamp01(stats.blood - value);
+            var scale = 1 - stats.blood / 2;
+            scale *= Time.deltaTime;
+            stats.hunger = Mathf.Clamp01(stats.hunger - 0.02f * scale);
+            stats.thirst = Mathf.Clamp01(stats.thirst - 0.04f * scale);
+            stats.blood = Mathf.Clamp01(stats.blood + 0.004f * scale);
+            stats.vitality = Mathf.Clamp01(stats.vitality + 0.002f * scale);
         }
 
         public void Balance()
         {
             var dt = Time.deltaTime;
             stats.oxygen = Mathf.Clamp01(stats.oxygen - (stats.oxygen - stats.blood) * 0.3f*dt);
-            stats.consciousness = Mathf.Clamp01(stats.consciousness - ((stats.consciousness - stats.oxygen)*0.1f + (1 - stats.oxygen) * 0.2f)* dt);
+            stats.consciousness = Mathf.Clamp01(stats.consciousness - ((stats.consciousness - stats.oxygen)*0.1f + (1 - stats.oxygen) * 0.1f + (stats.consciousness - stats.hunger) * 0.02f + (stats.consciousness - stats.thirst) * 0.04f + (stats.consciousness - stats.stamina) * 0.1f) * dt);
             stats.stamina = Mathf.Clamp01(stats.stamina - (stats.stamina - stats.oxygen)*0.2f*dt);
             stats.vitality = Mathf.Clamp01(stats.vitality - ((stats.vitality - stats.oxygen)*0.1f + (1 - stats.vitality) * 0.05f)*dt);
         }
