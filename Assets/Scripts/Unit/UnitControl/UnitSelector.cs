@@ -1,22 +1,17 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-//[DefaultExecutionOrder((int)ExecutionOrder.UnitSelector)]
 public class UnitSelector : MonoBehaviour
 {
     [SerializeField] MouseInputManager mouseInputManager;
     [SerializeField] Image mouseDragArea;
-    //[SerializeField] GameObject selectMarker;
-    //[SerializeField] UnitControlMenu unitControlMenu;
     [SerializeField] LayerMask selectableLayers;
     [SerializeField] LayerMask controlTargetLayers;
     readonly List<Transform> selecting = new();
     readonly Collider[] cols = new Collider[100];
 
-    //public List<Ally> SelectingAllies => selecting.Select(x => x.GetComponent<Ally>()).ToList();
     public Transform ControlTarget { get; private set; }
     public Transform HoveredTarget { get; private set; }
 
@@ -133,11 +128,7 @@ public class UnitSelector : MonoBehaviour
         {
             if (RaycastUnitOnMouse(out var selectHit, controlTargetLayers))
             {
-                // ƒzƒo[•\¦
-                //selectMarker.transform.position = selectHit.transform.position;
-                //selectMarker.SetActive(true);
-
-                // ƒzƒo[’†‚Ìƒ†ƒjƒbƒg‚ğ‘I‘ğ’†‚Ìƒ^[ƒQƒbƒg‚Éİ’è
+                // ãƒ›ãƒãƒ¼ä¸­ã®ãƒ¦ãƒ‹ãƒƒãƒˆã‚’é¸æŠä¸­ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«è¨­å®š
                 SetHoveredTarget(selectHit.transform);
             }
             else
@@ -154,7 +145,7 @@ public class UnitSelector : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒNƒŠƒbƒN‚µ‚½ƒ†ƒjƒbƒg‚ğ‘I‘ğ‚·‚éB
+    /// ã‚¯ãƒªãƒƒã‚¯ã—ãŸãƒ¦ãƒ‹ãƒƒãƒˆã‚’é¸æŠã™ã‚‹ã€‚
     /// </summary>
     bool TryGetClickedEntity(out Transform entity)
     {
@@ -176,7 +167,7 @@ public class UnitSelector : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒNƒŠƒbƒN‚µ‚½ƒIƒuƒWƒFƒNƒg‚ğs“®‘ÎÛ‚É‚·‚éB
+    /// ã‚¯ãƒªãƒƒã‚¯ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡Œå‹•å¯¾è±¡ã«ã™ã‚‹ã€‚
     /// </summary>
     void SelectClickedForControl()
     {
@@ -208,7 +199,7 @@ public class UnitSelector : MonoBehaviour
         return (Physics.Raycast(ray, out hit, float.MaxValue, layer.value));
     }
 
-    // ƒhƒ‰ƒbƒO‚µ‚Ä‚¢‚éŠÔA‘I‘ğ”ÍˆÍ‚ğ•\¦‚µA”ÍˆÍ“à‚Ìƒ†ƒjƒbƒg‚ğ‘I‘ğ‚·‚éB
+    // ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦ã„ã‚‹é–“ã€é¸æŠç¯„å›²ã‚’è¡¨ç¤ºã—ã€ç¯„å›²å†…ã®ãƒ¦ãƒ‹ãƒƒãƒˆã‚’é¸æŠã™ã‚‹ã€‚
     void Drag()
     {
         ClearSelecting();
@@ -254,7 +245,7 @@ public class UnitSelector : MonoBehaviour
             {
                 var col = cols[i];
 
-                if (CheckUnitInArea(col))
+                if (CheckUnitInCamera(col))
                 {
                     Debug.DrawLine(col.transform.position, col.transform.position + Vector3.up * 10, Color.green);
                     if (col.attachedRigidbody != null)
@@ -274,9 +265,9 @@ public class UnitSelector : MonoBehaviour
         }
 
         /// <summary>
-        /// ‹‘ä“à‚É“ü‚Á‚Ä‚¢‚é‚©
+        /// è¦–éŒå°å†…ã«å…¥ã£ã¦ã„ã‚‹ã‹
         /// </summary>
-        static bool CheckUnitInArea(Collider collider)
+        static bool CheckUnitInCamera(Collider collider)
         {
             var bounds = collider.bounds;
             var planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
