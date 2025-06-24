@@ -23,8 +23,8 @@ public partial class UnitStats : MonoBehaviour
     public float Blood => blood;
     public float Oxygen => oxygen;
     public float Consciousness => consciousness;
-    public float Hunger => hunger;
-    public float Thirst => thirst;
+    public float Hunger { get => hunger; set => hunger = value; }
+    public float Thirst { get => thirst; set => thirst = value; }
     public float Stamina => stamina;
     public float Vitality => vitality;
 
