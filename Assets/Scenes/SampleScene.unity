@@ -1182,6 +1182,7 @@ GameObject:
   - component: {fileID: 554895344}
   - component: {fileID: 554895345}
   - component: {fileID: 554895346}
+  - component: {fileID: 554895347}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -1362,6 +1363,23 @@ MonoBehaviour:
   stats: {fileID: 554895344}
   agent: {fileID: 554895343}
   target: {fileID: 0}
+--- !u!114 &554895347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554895338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed5fb0834ebe6b40a716321ba4274cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 554895345}
+  visionRange: 10
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &599713824 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 442186297729841288, guid: d3fd53d61bbe6e940bcbc7d23b013586, type: 3}
