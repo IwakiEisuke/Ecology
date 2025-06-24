@@ -3,6 +3,9 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     [SerializeField] UnitStats stats;
+    [SerializeField] UnitBrain brain;
+
+    public UnitBrain Brain => brain;
 
     private void Update()
     {
@@ -15,5 +18,4 @@ public class Unit : MonoBehaviour
             stats.manipulator.Reduction();
         }
     }
-
 }
