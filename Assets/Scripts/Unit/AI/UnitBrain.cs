@@ -22,6 +22,16 @@ public class UnitBrain : MonoBehaviour
         }
         else if ((target.position - transform.position).sqrMagnitude < 2)
         {
+            if (target.TryGetComponent<Food>(out Food food))
+            {
+                // 食べ物に到達した場合、食べる処理を実行
+                food.Eat(unit);
+            }
+            else if (target.TryGetComponent<Unit>(out Unit targetUnit))
+            {
+                // 他のユニットに到達した場合、戦闘や交流などの処理を実行
+                Debug.Log($"{unit.name} reached {targetUnit.name}");
+            }
             target = null;
         }
     }

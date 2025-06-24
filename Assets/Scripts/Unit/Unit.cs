@@ -5,6 +5,7 @@ public class Unit : MonoBehaviour
     [SerializeField] UnitStats stats;
     [SerializeField] UnitBrain brain;
 
+    public UnitStats Stats => stats;
     public UnitBrain Brain => brain;
 
     private void Update()
